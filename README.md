@@ -12,7 +12,7 @@ To let the user view and manage real-time commodities and inventory in different
 - Maximum of 10 stores.
 
 **Features to implement**
-- Search according to filters 
+- Search  and sort according to filters 
 - Insert commodity
 - Delete commodity
 - Update information for a commodity
