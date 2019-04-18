@@ -1,0 +1,8 @@
+name/manufacturer/amount/price/out-of-stockstatus
+paper/man1/65/15.00/0
+apple/man2/40/6.00/0
+pear/man3/32/5.00/0
+pen/man3/0/6.00/1
+eraser/man3/0/3.00/1
+pencil/man4/31/10.00/0
+water_bottle/man5/30/30.00/0
