@@ -4,11 +4,12 @@
 **Problem Statement**
 
 To let the user view and manage real-time commodities and inventory in different retail locations. The system will notify the user when commodities are nearly out of stock. 
+
 **Problem Setting**
 
 - Effects of procurements and restocks are immediate.
 - Each store can store up to 100 products.
-- Maximum of 10 stores.
+- Maximum of 3 stores.
 
 **Features to implement**
 - Search  and sort according to filters 
