@@ -57,11 +57,12 @@ bool changing_status_system(int index, item inventory[]){
 }
 
 void printing_array(int index, item inventory[]){
-    cout << inventory[index].key << endl;
-    cout << inventory[index].name << endl;
-    cout << inventory[index].manufacturer << endl;
-    cout << inventory[index].amount << endl;
-    cout << inventory[index].price << endl;
+    cout << inventory[index].key <<" ";
+    cout << inventory[index].name <<" ";
+    cout << inventory[index].manufacturer <<" ";
+    cout << inventory[index].amount <<" ";
+    cout << inventory[index].price <<" ";
+    cout<<endl;
 }
 
 
@@ -76,27 +77,31 @@ void search_function(int array_size, item inventory[]){
     cin >> num_1;
     if(num_1 == 1){
         for (int i = 0; i < array_size; i++){
-            if (inventory[i].status){
+            if (!inventory[i].status){
                 printing_array(i, inventory);
             }
         }
     }
     else if(num_1 == 2){
         for (int i = 0; i < array_size; i++){
-            if (!inventory[i].status){
+            if (inventory[i].status){
                 printing_array(i, inventory);
             }
         }
     }
     else if(num_1 == 3){
-        string name_of_product;
-        cout << "Please type the name of the product: ";
-        cin >> name_of_product;
-        for (int i = 0; i < array_size; i++){
-            if (name_of_product == inventory[i].name){
-                printing_array(i, inventory);
+        int found;
+        string search_name;
+        cout<<"Input search querry:";
+        cin>>search_name;
+        for(int i = 0; i<array_size; i++)
+            {
+              found = inventory[i].name.find(search_name);
+              if(found!=std::string::npos)
+                  {
+                    printing_array(i, inventory);
+                  }
             }
-        }
     }
     else{
         string name_of_manufacturner;
@@ -109,7 +114,16 @@ void search_function(int array_size, item inventory[]){
         }
     }
 }
-
+void print_menu()
+{
+  cout<< "-------------------------------------------------------------"<<endl;
+  cout << "1) Search commodity according to different filters. " << endl;
+  cout << "2) Insert new commodity. " << endl;
+  cout << "3) Delete obsolete commodity. " << endl;
+  cout << "4) Update commodity information. " << endl;
+  cout << "5) Exit. "<<endl;
+  cout << "Your choice: ";
+}
 bool inventory_status_monitor(){
     return false;
 }
@@ -144,29 +158,42 @@ int main()
     }
 
 
-    int choice = 0;
+    int action, product_choice, choice = 0;
+    cout << "Welcome! There are " << count << " items in the warehouse, please choose a function. " << endl;
+    cout << "1) Search commodity according to different filters. " << endl;
+    cout << "2) Insert new commodity. " << endl;
+    cout << "3) Delete obsolete commodity. " << endl;
+    cout << "4) Update commodity information. " << endl;
+    cout << "5) Exit. "<<endl;
+    cout << "Your choice: ";
+    cin >> choice;
     while (choice != 5){
 
-        cout << "Welcome! There are " << count << " items in the warehouse, please choose a function. " << endl;
-        cout << "1) Search commodity according to different filters. " << endl;
-        cout << "2) Insert new commodity. " << endl;
-        cout << "3) Delete obsolete commodity. " << endl;
-        cout << "4) Update commodity information. " << endl;
-        cout << "5) Exit. "<<endl;
-        cout << "Your choice: ";
-        cin >> choice;
         if (choice == 1){
             search_function(count, inventory);
-            cin >> choice;
+            cout<<"Input the key of your chosen product: ";
+            cin>>product_choice;
+            cout<<"What do you want to do?"<<endl;
+            cout<<"1. Delete commodity"<<endl;
+            cout<<"2. Update commodity"<<endl;
+            cin>>action;
+            if(action==1)
+                delete_item(product_choice-1,inventory);
+            else if(action==2)
+                update_item(product_choice-1,inventory);
+            print_menu();
+            cin>>choice;
         }
         else if (choice == 2){
             insert(inventory, count);
-            cin >> choice;
+            cout<<"Item added!";
+            print_menu();
+            cin>>choice;
         }
 
         else{
             cout << "Invalid input, please try again: ";
-            cin >> choice;
+
         }
     }
 
