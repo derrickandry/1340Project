@@ -65,8 +65,44 @@ void printing_array(int index, item inventory[]){
     cout<<endl;
 }
 
+void search_in_stock(int array_size, item inventory[]){
+    for (int i = 0; i < array_size; i++){
+        if (!inventory[i].status){
+            printing_array(i, inventory);
+        }
+    }
+}
 
-// passing an array of struct
+void search_out_of_stock(int array_size, item inventory[]){
+    for (int i = 0; i < array_size; i++){
+        if (inventory[i].status){
+            printing_array(i, inventory);
+        }
+    }
+}
+
+void search_by_product_name(int array_size, item inventory[]){
+    string name_of_product;
+    cout << "Please type the name of the product: ";
+    cin >> name_of_product;
+    for (int i = 0; i < array_size; i++){
+        if (name_of_product == inventory[i].name){
+            printing_array(i, inventory);
+        }
+    }
+}
+
+void search_by_manufacturner(int array_size, item inventory[]){
+    string name_of_manufacturner;
+    cout << "Please type the name of the : ";
+    cin >> name_of_manufacturner;
+    for (int i = 0; i < array_size; i++){
+        if (name_of_manufacturner == inventory[i].manufacturer){
+            printing_array(i, inventory);
+        }
+    }
+}
+
 void search_function(int array_size, item inventory[]){
     int num_1;
     cout << "Please choose which filter would you like to use:" << endl;
@@ -76,44 +112,20 @@ void search_function(int array_size, item inventory[]){
     cout << "4) manufacturer " << endl;
     cin >> num_1;
     if(num_1 == 1){
-        for (int i = 0; i < array_size; i++){
-            if (!inventory[i].status){
-                printing_array(i, inventory);
-            }
-        }
+        search_in_stock(array_size, inventory);
     }
     else if(num_1 == 2){
-        for (int i = 0; i < array_size; i++){
-            if (inventory[i].status){
-                printing_array(i, inventory);
-            }
-        }
+        search_out_of_stock(array_size, inventory);
     }
     else if(num_1 == 3){
-        int found;
-        string search_name;
-        cout<<"Input search querry:";
-        cin>>search_name;
-        for(int i = 0; i<array_size; i++)
-            {
-              found = inventory[i].name.find(search_name);
-              if(found!=std::string::npos)
-                  {
-                    printing_array(i, inventory);
-                  }
-            }
+        search_by_product_name(array_size, inventory);
     }
     else{
-        string name_of_manufacturner;
-        cout << "Please type the name of the : ";
-        cin >> name_of_manufacturner;
-        for (int i = 0; i < array_size; i++){
-            if (name_of_manufacturner == inventory[i].manufacturer){
-                printing_array(i, inventory);
-            }
-        }
+        search_by_manufacturner(array_size, inventory);
     }
 }
+
+
 void print_menu()
 {
   cout<< "-------------------------------------------------------------"<<endl;
