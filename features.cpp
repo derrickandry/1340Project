@@ -2,8 +2,8 @@
 using namespace std;
 
 void update_item(item inventory[], int index) // A function allowing users tp update the infomation of item
-{                                             // Input: An array of struct storing the information of items in that store
-  string name, man;
+{                                             // inventory: An array of struct storing the information of items in that store
+  string name, man;                           // index: The key of product to be updated
   int amount;
   double price;
   int choice;
@@ -103,7 +103,7 @@ bool changing_status_system(int index, item inventory[]){ // A function monitori
 
 
 
-void search_in_stock(int array_size, item inventory[]){ // A function allowing the user to search
+void search_in_stock(int array_size, item inventory[]){ // A function allowing the user to search available items
     int i,found;                                        // array_size: number of items in that store
     int no_result_flag = 1;                             // inventory[]: An array of struct storing the information of items in that store
     int n = 0;
@@ -183,10 +183,9 @@ void search_all(int array_size, item inventory[]){
     else
       cout << "No results found! Returning to main menu"<<endl;
   }
-void search_out_of_stock(int array_size, item inventory[]){
-
-    int i,found;
-    int no_result_flag = 1;
+void search_out_of_stock(int array_size, item inventory[]){  // A function allowing user to search unavailable product
+    int i,found;                                             // array_size: number of items in that store
+    int no_result_flag = 1;                                  // inventory[]: An array of struct storing the information of items in that store
     int n = 0;
     const int MAXSIZE = 100;
     item *sorted_inventory;
@@ -226,10 +225,9 @@ void search_out_of_stock(int array_size, item inventory[]){
       cout << "No results found! Returning to main menu"<<endl;
   }
 
-void search_by_product_name(int array_size, item inventory[]){
-
-  int i,found;
-  int no_result_flag = 1;
+void search_by_product_name(int array_size, item inventory[]){ // A function allowing user to serach by product name
+  int i,found;                                                 // array_size: number of items in that store
+  int no_result_flag = 1;                                      // inventory[]: An array of struct storing the information of items in that store
   int n = 0;
   const int MAXSIZE = 100;
   item *sorted_inventory;
@@ -275,7 +273,7 @@ void search_by_product_name(int array_size, item inventory[]){
       cout << "No results found! Returning to main menu"<<endl;
   }
 
-void search_by_manufacturer(int array_size, item inventory[]){
+void search_by_manufacturer(int array_size, item inventory[]){ 
     int i,found;
     int no_result_flag = 1;
     int n = 0;
@@ -327,10 +325,10 @@ void search_by_manufacturer(int array_size, item inventory[]){
 
 
 
-void search_function(int array_size, item inventory[]){
-    int num_1;
-    cout << "Please choose which filter would you like to use:" << endl;
-    cout << "1) in-stock " << endl;
+void search_function(int array_size, item inventory[]){  // A function allowing user to serach by product name
+    int num_1;                                           // array_size: number of items in that store
+    cout << "Please choose which filter would you like to use:" << endl; 
+    cout << "1) in-stock " << endl;                      // // inventory[]: An array of struct storing the information of items in that store
     cout << "2) out-of-stock " << endl;
     cout << "3) product name " << endl;
     cout << "4) manufacturer " << endl;
