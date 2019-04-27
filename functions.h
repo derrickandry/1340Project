@@ -22,8 +22,9 @@
       double price;
       bool status;
   };
-
-  void search_function(int , item []);
+  
+  int user_login();
+  void search_function(int a , item i[]);
   void print_menu();
   void printing_array(int a , item b[]);
   void print_update_menu();
