@@ -87,5 +87,7 @@ int main()
             cin>>choice;
             }
         }
+    fin.close();
+    delete [] inventory;
     return 0;
 }
