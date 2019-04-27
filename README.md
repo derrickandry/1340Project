@@ -10,6 +10,8 @@ To let the user view and manage commodities and inventory in 3 retail locations.
 - Effects of procurements and restocks are immediate.
 - Each store can store up to 100 products.
 - Maximum of 3 stores.
+- Input product details are in 3 text files --> Store1.txt, Store2.txt, Store3.txt
+- The updated data will be overwritten in the same file.
 
 **Features to implement**
 - Login function
@@ -20,12 +22,12 @@ To let the user view and manage commodities and inventory in 3 retail locations.
 - Change status of a commodity according to its stock
 - Prompt alerts when a commodity is out of stock.
 
-**Instuctions**
-Instuctions will be given when running the program.
 **Assumption**
-The user will collect the amount of sale of a particular item of tht day and update in the program at the end of day since the program is not online.
+The user will collect the amount of sale of a particular item of that day and update in the program at the end of day since the program is not online.
+
 **Compilation and execution**
 1. Download the zip
-2. Use any IDE to open a new prokect
-3. Put all the files into the project just opened
-4. Run the program
+2. Extract the folder
+3. Run terminal in the folder
+4. Type in "make main"
+5. Run main by typing "./main" in terminal.
