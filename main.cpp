@@ -11,7 +11,7 @@ int main()
   item *inventory;
   inventory = new item[MAXSIZE];
 
-  ifstream fin("Store1.txt");
+  ifstream fin("Store1.txt");// Initiate the array storing the data
   if (fin.fail())
   {
     cout<< "Can't open file"<<endl;
@@ -30,10 +30,11 @@ int main()
 
       count +=1;
 
-    }
+    }// The initialization finished
 
 
     int action, product_choice, choice = 0;
+    // interface of the inventory system
     cout << "Welcome! There are " << count << " items in the warehouse, please choose a function. " << endl;
     cout << "1) Search commodity according to different filters and update/delete it. " << endl;
     cout << "2) Insert new commodity. " << endl;
@@ -41,7 +42,7 @@ int main()
     cout << "Your choice: ";
     cin >> choice;
     while (choice != 3){
-
+        // Directs users to different functions upon differnet choices
         if (choice == 1){
             search_function(count, inventory);
             print_menu();
