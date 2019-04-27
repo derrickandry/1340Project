@@ -2,18 +2,19 @@
 using namespace std;
 
 
-void printing_array(int index, item inventory[]) // A function printing the infomation of item when neccessary
+void printing_array(int index, item inventory[])    // to print the details of item     input: index as INT and array of items.
 {
     cout << inventory[index].key <<" ";
     cout << inventory[index].name <<" ";
     cout << inventory[index].manufacturer <<" ";
     cout << inventory[index].amount <<" ";
     cout <<fixed<<setprecision(2)<< inventory[index].price <<" ";
+    cout << inventory[index].status;
     cout<<endl;
 
 }
 
-void print_update_menu() // A function pringting the menu of update function
+void print_update_menu()      //to print the update-item menu
 {
   cout<<"Which information to be updated?"<<endl;
   cout<<"1. Name"<<endl;
@@ -26,7 +27,7 @@ void print_update_menu() // A function pringting the menu of update function
 }
 
 
-void print_menu() // A function printing the main menu function when neccsary
+void print_menu()     // to print the menu
 {
   cout<< "-------------------------------------------------------------"<<endl;
   cout << "1) Search and sort commodity according to different filters. " << endl;

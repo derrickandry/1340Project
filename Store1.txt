@@ -1,7 +1,14 @@
-1 paper man1 65 15.00 0 1
-2 apple man2 40 6.00 0 2
+1 paper man1 65 15.00 0
+2 apple man2 40 6.00 0
 3 pear man3 32 5.00 0
 4 pen man3 0 6.00 1
 5 eraser man3 0 3.00 1
 6 pencil man4 31 10.00 0
-7 water_bottle man5 30 30.00 0
+7 cable man5 30 30.00 0
+8 band man1 65 15.00 0
+9 charger man2 40 6.00 0
+10 stocker man3 32 5.00 0
+11 pan man3 0 6.00 1
+12 balloon man3 0 3.00 1
+13 tissue man4 31 10.00 0
+14 banana man5 30 30.00 0

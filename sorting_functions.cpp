@@ -2,8 +2,11 @@
 using namespace std;
 
 
-// -----------------------BOOLEAN FUNCTIONS FOR SORTING---------------------------------------//
-bool compare_manufacturer(item a, item b){
+// -----------------------BOOLEAN FUNCTIONS FOR SORTING RULES---------------------------------------//
+
+
+bool compare_manufacturer(item a, item b){                   // boolean functions to return TRUE when a<b according to Manufacturer
+                                                            // input: 2 item data type to compare.
   int value;
   value = (a.manufacturer).compare(b.manufacturer);
   if(value>0)
@@ -25,8 +28,10 @@ bool compare_name(item a, item b){
 
 
 
-//------------------------------------------------------------------------------------------------//
-void sort_function(int array_size, item inventory[]){
+//---------------------------------------SORT FUNCTION---------------------------------------//
+
+void sort_function(int array_size, item inventory[]){             //function to print sort menu and call the proper sorting functions
+                                                                  // input: size of array as int and array of items
 
     int choice;
 

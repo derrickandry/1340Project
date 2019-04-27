@@ -60,7 +60,7 @@ int main()
     }
 
 
-    int action, product_choice, choice = 0;
+    int choice = 0;
     cout << "Welcome! There are " << count << " items in Store "<< store<<", please choose a function. " << endl;
     cout << "1) Search commodity according to different filters and update/delete it. " << endl;
     cout << "2) Insert new commodity. " << endl;

@@ -1,12 +1,10 @@
 #include "functions.h"
 using namespace std;
 
-
 int user_login()                        //function for logging in the menu
 {
   string username, password;
   int counter = 0;
-  int found = 0;
   string x;
   string details[10][2];
 
@@ -34,7 +32,6 @@ int user_login()                        //function for logging in the menu
       {
         if(details[i][0]==username && details[i][1]==password)
             {
-              found==1;
               cout<<"Login Successful!"<<endl;
               return 1;
             }
@@ -43,9 +40,9 @@ int user_login()                        //function for logging in the menu
 
 }
 
-void update_item(item inventory[], int index) // A function allowing users tp update the infomation of item
-{                                             // inventory: An array of struct storing the information of items in that store
-  string name, man;                           // index: The key of product to be updated
+void update_item(item inventory[], int index)
+{
+  string name, man;
   int amount;
   double price;
   int choice;
@@ -55,14 +52,14 @@ void update_item(item inventory[], int index) // A function allowing users tp up
         cin>>choice;
         if(choice==1)
           {
-            cout<<"Please input the new name: "; // Update the name.
+            cout<<"Please input the new name: ";
             cin>>name;
             inventory[index].name = name;
             cout<<"Name updated!";
             cout<<endl;
             print_update_menu();
           }
-        else if(choice==2) // Update the manufacturer.
+        else if(choice==2)
           {
             cout<<"Please input the new manufacturer: ";
             cin>>man;
@@ -70,7 +67,7 @@ void update_item(item inventory[], int index) // A function allowing users tp up
             cout<<"Manufacturer updated!";
             print_update_menu();
           }
-        else if(choice==3) // Update the Stock.
+        else if(choice==3)
           {
             cout<<"Please input the new amount: ";
             cin>>amount;
@@ -78,7 +75,7 @@ void update_item(item inventory[], int index) // A function allowing users tp up
             cout<<"Stock updated!";
             print_update_menu();
           }
-        else if(choice==4) // Update the price
+        else if(choice==4)
           {
             cout<<"Please input the new price: ";
             cin>>price;
@@ -86,15 +83,15 @@ void update_item(item inventory[], int index) // A function allowing users tp up
             cout<<"Price updated!";
             print_update_menu();
           }
-        else if(choice==0) // Exit
+        else if(choice==0)
             break;
       };
 }
 
-void delete_item(item inventory[], int &count, int index) // A function allowing users to delete an item from the inventory system
-{                                                         // Input:
-  count -=1;                                              // inventory[]: An array of struct storing the information of items in that store
-  for(int i = index; i<count; i++)                        // index: The key for the product to be deleted (Will be shown after sorting function)    
+void delete_item(item inventory[], int &count, int index)
+{
+  count -=1;
+  for(int i = index; i<count; i++)
       {
         inventory[index].key = inventory[index+1].key-1;
         inventory[index].name = inventory[index+1].name;
@@ -105,9 +102,9 @@ void delete_item(item inventory[], int &count, int index) // A function allowing
       }
 }
 
-void insert(item inventory[], int &count)                 // A function allowing users to add one more item from the inventory system  
-{                                                         // Input: An array of struct storing the information of items in that store
-  string name,man;                                        // count: The number of product in that store
+void insert(item inventory[], int &count)
+{
+  string name,man;
   int amount;
   double price;
   cout<<"Please input the details: NAME MANUFACTURER AMOUNT PRICE"<<endl;
@@ -121,10 +118,9 @@ void insert(item inventory[], int &count)                 // A function allowing
   count +=1;
 
 }
-bool status_monitoring_system(int index, item inventory[]){ // A function monitoring the stocks in inventory, it will be excuted after the user 
-    if (inventory[index].amount <= 5){                      // runs the programming or make an ajustment to the stock, and reminds user to restock
-                                                            // if the amount of that item is less than 5.
-        cout << inventory[index].name << " only has " << inventory[index].amount << " in stock now, it is time to re-stock!" << endl;
+bool status_monitoring_system(int index, item inventory[]){
+    if (inventory[index].amount <= 5){
+        cout << inventory[index].name << "only has" << inventory[index].amount << "in stock now, it is time to re-stock!" << endl;
         return true;
     }
     else{
@@ -132,10 +128,10 @@ bool status_monitoring_system(int index, item inventory[]){ // A function monito
     }
 }
 
-bool changing_status_system(int index, item inventory[]){ // A function monitoring the availability of that product, it will be excuted after the user
-    if (inventory[index].amount == 0){                    // runs the programming or make an ajustment to the stock.
+bool changing_status_system(int index, item inventory[]){
+    if (inventory[index].amount == 0){
         inventory[index].status = false;
-        cout << inventory[index].name << " is now inavailable." << endl;
+        cout << inventory[index].name << "is now unavailable" << endl;
         return true;
     }
     else{
@@ -145,14 +141,13 @@ bool changing_status_system(int index, item inventory[]){ // A function monitori
 
 
 
-void search_in_stock(int array_size, item inventory[]){ // A function allowing the user to search available items
-    int i,found;                                        // array_size: number of items in that store
-    int no_result_flag = 1;                             // inventory[]: An array of struct storing the information of items in that store
+void search_in_stock(int array_size, item inventory[]){
+    int no_result_flag = 1;
     int n = 0;
     const int MAXSIZE = 100;
     item *sorted_inventory;
     sorted_inventory = new item[MAXSIZE];
-    int action, product_choice, choice = 0;
+    int action, product_choice;
 
     for (int i = 0; i < array_size; i++){
         if (!inventory[i].status){
@@ -168,7 +163,7 @@ void search_in_stock(int array_size, item inventory[]){ // A function allowing t
         }
 
     if(no_result_flag==0){
-    sort_function(n,sorted_inventory);
+        sort_function(n,sorted_inventory);
 
     for(int m = 0; m<n ; m++)
         printing_array(m,sorted_inventory);
@@ -188,13 +183,11 @@ void search_in_stock(int array_size, item inventory[]){ // A function allowing t
       cout << "No results found! Returning to main menu"<<endl;
   }
 void search_all(int array_size, item inventory[]){
-
-    int i,found;
     int n = 0;
     const int MAXSIZE = 100;
     item *sorted_inventory;
     sorted_inventory = new item[MAXSIZE];
-    int action, product_choice, choice = 0;
+    int action, product_choice;
 
     for (int i = 0; i < array_size; i++){
           sorted_inventory[n].key = inventory[i].key;
@@ -221,18 +214,15 @@ void search_all(int array_size, item inventory[]){
         delete_item(inventory,array_size,product_choice-1);
     else if(action==2)
         update_item(inventory, product_choice-1);
-
-    else
-      cout << "No results found! Returning to main menu"<<endl;
   }
-void search_out_of_stock(int array_size, item inventory[]){  // A function allowing user to search unavailable product
-    int i,found;                                             // array_size: number of items in that store
-    int no_result_flag = 1;                                  // inventory[]: An array of struct storing the information of items in that store
+void search_out_of_stock(int array_size, item inventory[]){
+
+    int no_result_flag = 1;
     int n = 0;
     const int MAXSIZE = 100;
     item *sorted_inventory;
     sorted_inventory = new item[MAXSIZE];
-    int action, product_choice, choice = 0;
+    int action, product_choice;
 
     for (int i = 0; i < array_size; i++){
         if (inventory[i].status){
@@ -267,16 +257,18 @@ void search_out_of_stock(int array_size, item inventory[]){  // A function allow
       cout << "No results found! Returning to main menu"<<endl;
   }
 
-void search_by_product_name(int array_size, item inventory[]){ // A function allowing user to serach by product name
-  int i,found;                                                 // array_size: number of items in that store
-  int no_result_flag = 1;                                      // inventory[]: An array of struct storing the information of items in that store
+void search_by_product_name(int array_size, item inventory[]){
+
+  int i;
+  std::string::size_type found;
+  int no_result_flag = 1;
   int n = 0;
   const int MAXSIZE = 100;
   item *sorted_inventory;
   sorted_inventory = new item[MAXSIZE];
 
   string name_of_product;
-  int action, product_choice, choice = 0;
+  int action, product_choice;
   cout << "Input the name of product: ";
   cin >> name_of_product;
   for(i = 0; i<array_size; i++)
@@ -315,8 +307,9 @@ void search_by_product_name(int array_size, item inventory[]){ // A function all
       cout << "No results found! Returning to main menu"<<endl;
   }
 
-void search_by_manufacturer(int array_size, item inventory[]){ 
-    int i,found;
+void search_by_manufacturer(int array_size, item inventory[]){
+    int i;
+    std::string::size_type found;
     int no_result_flag = 1;
     int n = 0;
     const int MAXSIZE = 100;
@@ -324,7 +317,7 @@ void search_by_manufacturer(int array_size, item inventory[]){
     sorted_inventory = new item[MAXSIZE];
 
     string name_of_manufacturer;
-    int action, product_choice, choice = 0;
+    int action, product_choice;
     cout << "Input the name of manufacturer: ";
     cin >> name_of_manufacturer;
     for(i = 0; i<array_size; i++)
@@ -367,10 +360,10 @@ void search_by_manufacturer(int array_size, item inventory[]){
 
 
 
-void search_function(int array_size, item inventory[]){  // A function allowing user to serach by product name
-    int num_1;                                           // array_size: number of items in that store
-    cout << "Please choose which filter would you like to use:" << endl; 
-    cout << "1) in-stock " << endl;                      // // inventory[]: An array of struct storing the information of items in that store
+void search_function(int array_size, item inventory[]){
+    int num_1;
+    cout << "Please choose which filter would you like to use:" << endl;
+    cout << "1) in-stock " << endl;
     cout << "2) out-of-stock " << endl;
     cout << "3) product name " << endl;
     cout << "4) manufacturer " << endl;

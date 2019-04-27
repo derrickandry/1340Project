@@ -1,4 +1,2 @@
-user1
-p8ssw0rd
-user2
-123569
+user1 p8ssw0rd
+user2 123569
