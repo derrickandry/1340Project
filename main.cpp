@@ -5,13 +5,40 @@ using namespace std;
 
 int main()
 {
+  int store;
+  int found;
+  found = user_login();
+  while(true)
+  {
+      if(found==1)
+          break;
+      cout<<"Login failed, please try again:"<<endl;
+      found=user_login();
+  }
   string line;
   int count = 0;  //stores the number of items in inventory
   const int MAXSIZE = 100;
   item *inventory;
   inventory = new item[MAXSIZE];
-
-  ifstream fin("Store1.txt");// Initiate the array storing the data
+  cout<<"Welcome! Please input the Store Number(1-3):";
+  cin>>store;
+  while(!(store<=3 ||store>=1))
+      {
+        cout<<"Invalid input. Please try again!";
+        cin>>store;
+      }
+  ifstream fin;
+  if(store==1)
+      fin.open("Store1.txt");
+  else if(store==2)
+      fin.open("Store2.txt");
+  else if(store==3)
+      fin.open("Store3.txt");
+  else
+      {
+        cout<<"Invalid input. Exiting program.";
+        exit(1);
+      }
   if (fin.fail())
   {
     cout<< "Can't open file"<<endl;
@@ -30,19 +57,18 @@ int main()
 
       count +=1;
 
-    }// The initialization finished
+    }
 
 
     int action, product_choice, choice = 0;
-    // interface of the inventory system
-    cout << "Welcome! There are " << count << " items in the warehouse, please choose a function. " << endl;
+    cout << "Welcome! There are " << count << " items in Store "<< store<<", please choose a function. " << endl;
     cout << "1) Search commodity according to different filters and update/delete it. " << endl;
     cout << "2) Insert new commodity. " << endl;
     cout << "3) Exit. "<<endl;
     cout << "Your choice: ";
     cin >> choice;
     while (choice != 3){
-        // Directs users to different functions upon differnet choices
+
         if (choice == 1){
             search_function(count, inventory);
             print_menu();
