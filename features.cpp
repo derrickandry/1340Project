@@ -1,6 +1,48 @@
 #include "functions.h"
 using namespace std;
 
+
+int user_login()                        //function for logging in the menu
+{
+  string username, password;
+  int counter = 0;
+  int found = 0;
+  string x;
+  string details[10][2];
+
+  ifstream fin("login_details.txt");
+  if (fin.fail())
+  {
+    cout<< "Can't open file"<<endl;
+    exit(1);
+  }
+
+  while(fin>>x)
+  {
+    details[counter][0] = x;
+    fin>>x;
+    details[counter][1] = x;
+    counter+=1;
+  }
+
+  cout<<"Enter Username:";
+  cin>>username;
+  cout<<"Enter Password:";
+  cin>>password;
+
+  for(int i =0;i<10;i++)
+      {
+        if(details[i][0]==username && details[i][1]==password)
+            {
+              found==1;
+              cout<<"Login Successful!"<<endl;
+              return 1;
+            }
+      }
+  return 0;
+
+}
+
 void update_item(item inventory[], int index) // A function allowing users tp update the infomation of item
 {                                             // inventory: An array of struct storing the information of items in that store
   string name, man;                           // index: The key of product to be updated
